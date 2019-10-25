@@ -4,13 +4,26 @@
   list-style: none;
 }
 
+.Votes a {
+  text-decoration: none;
+  color: inherit;
+}
+
 .Votes-row {
   display: flex;
   flex-direction: row;
 }
 
-.Votes-row:nth-child(2n) {
-  background-color: #EEE;
+.Votes-row:hover {
+  background-color: #eee;
+}
+
+a:nth-child(2n) .Votes-row {
+  background-color: #ddd;
+}
+
+a:nth-child(2n) .Votes-row:hover {
+  background-color: #ccc;
 }
 
 .Votes-cell {

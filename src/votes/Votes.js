@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { Link, Switch, Route, useRouteMatch } from 'react-router-dom';
 import './Votes.css';
 
+import Vote from './Vote';
+
 function Votes() {
   const match = useRouteMatch();
   const [page, setPage] = useState(1);
@@ -21,13 +23,13 @@ function Votes() {
 
   return (
     <Switch>
-      <Route path ={`${match.path}/:voteId`}>
-        
+      <Route path ={`${match.path}/:session/:voteId`}>
+        <Vote />
       </Route>
       <Route path={match.path}>
         <table className="Votes">
-          { votes.map(v => (
-            <Link to={`/votes/${v.number}`}>
+          { votes.map((v, i) => (
+            <Link to={`/votes/${v.session}/${v.number}`} key={i}>
               <tr className="Votes-row">
                 <td className="Votes-cell">#{v.number}</td>
                 <td className="Votes-cell">{v.date}</td>
@@ -37,9 +39,9 @@ function Votes() {
               </tr>
             </Link>
           ))}
-          <button onClick={() => {setPage(Math.max(1, page - 1))}}>Prev Page</button>
-          <button onClick={() => {setPage(page + 1)}}>Next Page</button>
         </table>
+        <button onClick={() => {setPage(Math.max(1, page - 1))}}>Prev Page</button>
+        <button onClick={() => {setPage(page + 1)}}>Next Page</button>
       </Route>
     </Switch>
   );
