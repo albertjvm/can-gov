@@ -12,6 +12,8 @@
 .PoliticianList-row {
   display: flex;
   flex-direction: row;
+  padding: 0.25rem 0;
+  font-size: 14pt;
 }
 
 .PoliticianList-cell {

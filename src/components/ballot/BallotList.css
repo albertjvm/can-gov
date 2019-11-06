@@ -7,6 +7,8 @@
 .BallotList-row {
   display: flex;
   flex-direction: row;
+  padding: 0.25rem 0;
+  font-size: 14pt;
 }
 
 .BallotList-row:nth-child(2n) {
