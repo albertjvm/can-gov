@@ -1,0 +1,30 @@
+.PoliticianList {
+  display: flex;
+  flex-direction: column;
+  justify-items: start;
+}
+
+.PoliticianList a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.PoliticianList-row {
+  display: flex;
+  flex-direction: row;
+}
+
+.PoliticianList-cell {
+  flex: 1;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.PoliticianList-cell.f2 {
+  flex: 2;
+}
+
+.PoliticianList-cell.f3 {
+  flex: 3;
+}

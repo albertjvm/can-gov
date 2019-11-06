@@ -7,15 +7,21 @@ import {
 } from "react-router-dom";
 
 import VoteList from './components/vote/VoteList';
+import PoliticianList from './components/politician/PoliticianList';
+import Header from './components/header/Header';
 import './App.css';
 
 function App() {
   return (
     <Router>
       <div className="App">
+        <Header />
         <Switch>
           <Route path="/votes">
             <VoteList />
+          </Route>
+          <Route path="/politicians">
+            <PoliticianList />
           </Route>
           <Route path="/">
             <Redirect to="/votes" />

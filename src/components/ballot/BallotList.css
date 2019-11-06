@@ -2,7 +2,6 @@
   display: flex;
   flex-direction: column;
   justify-items: start;
-  padding: 1rem;
 }
 
 .BallotList-row {

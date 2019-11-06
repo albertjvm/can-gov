@@ -23,7 +23,7 @@ function VoteList() {
 
   return (
     <Switch>
-      <Route path ={`${match.path}/:session/:voteId`}>
+      <Route path={`${match.path}/:session/:voteId`}>
         <BallotList />
       </Route>
       <Route path={match.path}>
