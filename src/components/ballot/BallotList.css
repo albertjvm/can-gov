@@ -1,0 +1,20 @@
+.BallotList {
+  display: flex;
+  flex-direction: column;
+  justify-items: start;
+  padding: 1rem;
+}
+
+.BallotList-row {
+  display: flex;
+  flex-direction: row;
+}
+
+.BallotList-row:nth-child(2n) {
+  background-color: #ddd;
+}
+
+.BallotList-row span {
+  flex: 1;
+  text-align: left;
+}

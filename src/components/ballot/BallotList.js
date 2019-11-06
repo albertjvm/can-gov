@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import './Vote.css';
+import './BallotList.css';
+import BallotRow from './BallotRow';
 
-function Vote() {
+function BallotList() {
   const { session, voteId } = useParams();
   const [ballots, setBallots] = useState([]);
 
@@ -20,15 +21,12 @@ function Vote() {
   }, [session, voteId]);
 
   return (
-    <div className="Vote">
+    <div className="BallotList">
       {ballots.map((b, i) => (
-        <>
-          <span>{b.politician_url.split('/')[2]}</span>
-          <span>{b.ballot}</span>
-        </>
+        <BallotRow ballot={b} key={i} />
       ))}
     </div>
   );
 }
 
-export default Vote;
+export default BallotList;

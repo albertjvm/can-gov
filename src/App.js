@@ -6,7 +6,7 @@ import {
   Route,
 } from "react-router-dom";
 
-import Votes from './votes/Votes';
+import VoteList from './components/vote/VoteList';
 import './App.css';
 
 function App() {
@@ -15,7 +15,7 @@ function App() {
       <div className="App">
         <Switch>
           <Route path="/votes">
-            <Votes />
+            <VoteList />
           </Route>
           <Route path="/">
             <Redirect to="/votes" />

@@ -1,39 +1,41 @@
-.Votes {
+.VoteList {
   display: flex;
   flex-direction: column;
   list-style: none;
+  padding: 1rem;
 }
 
-.Votes a {
+.VoteList a {
   text-decoration: none;
   color: inherit;
 }
 
-.Votes-row {
+.VoteList-row {
   display: flex;
   flex-direction: row;
 }
 
-.Votes-row:hover {
+.VoteList-row:hover {
   background-color: #eee;
 }
 
-a:nth-child(2n) .Votes-row {
+a:nth-child(2n) .VoteList-row {
   background-color: #ddd;
 }
 
-a:nth-child(2n) .Votes-row:hover {
+a:nth-child(2n) .VoteList-row:hover {
   background-color: #ccc;
 }
 
-.Votes-cell {
+.VoteList-cell {
   max-height: 20px;
   flex: 1;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
+  text-align: left;
 }
 
-.Votes-cell.f3 {
+.VoteList-cell.f3 {
   flex: 3;
 }
