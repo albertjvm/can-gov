@@ -12,7 +12,7 @@ function BallotRow({ ballot, politician }) {
 
 function mapStateToProps(state, ownProps) {
   return {
-    politician: state.politicians.politicians.find(p => p.url === ownProps.ballot.politician_url),
+    politician: state.politicians.find(p => p.url === ownProps.ballot.politician_url),
   };
 }
 

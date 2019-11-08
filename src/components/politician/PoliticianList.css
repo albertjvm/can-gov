@@ -22,11 +22,3 @@
   white-space: nowrap;
   text-overflow: ellipsis;
 }
-
-.PoliticianList-cell.f2 {
-  flex: 2;
-}
-
-.PoliticianList-cell.f3 {
-  flex: 3;
-}

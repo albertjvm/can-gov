@@ -31,7 +31,7 @@ function PoliticianList({ politicians }) {
 
 function mapStateToProps(state) {
   return {
-    politicians: state.politicians.politicians,
+    politicians: state.politicians,
   };
 }
 

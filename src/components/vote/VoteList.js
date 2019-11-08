@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { Link, Switch, Route, useRouteMatch } from 'react-router-dom';
+import { Switch, Route, useRouteMatch } from 'react-router-dom';
 import './VoteList.css';
 
 import BallotList from '../ballot/BallotList';
+import VoteRow from './VoteRow';
 
 function VoteList() {
   const match = useRouteMatch();
@@ -17,7 +18,7 @@ function VoteList() {
     })
       .then(response => response.json())
       .then(response => {
-        setVotes(response.objects)
+        setVotes(response.objects);
       });
   }, [page]);
 
@@ -29,15 +30,7 @@ function VoteList() {
       <Route path={match.path}>
         <div className="VoteList">
           { votes.map((v, i) => (
-            <Link to={`/votes/${v.session}/${v.number}`} key={i}>
-              <div className="VoteList-row">
-                <span className="VoteList-cell">#{v.number}</span>
-                <span className="VoteList-cell">{v.date}</span>
-                <span className="VoteList-cell f3" title={v.description.en}>{v.description.en}</span>
-                <span className="VoteList-cell">{v.result}</span>
-                <span className="VoteList-cell">Y: {v.yea_total} N: {v.nay_total}</span>
-              </div>
-            </Link>
+            <VoteRow vote={v} key={i} />
           ))}
         </div>
         <button onClick={() => {setPage(Math.max(1, page - 1))}}>Prev Page</button>

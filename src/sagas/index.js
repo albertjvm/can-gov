@@ -1,6 +1,8 @@
 import { fork } from "redux-saga/effects";
-import politician from "./politicians.sagas";
+import politicians from "./politicians.sagas";
+import bills from "./bills.sagas";
 
 export default function*() {
-  yield fork(politician);
+  yield fork(politicians);
+  yield fork(bills);
 };

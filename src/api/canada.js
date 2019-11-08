@@ -14,11 +14,24 @@ export default {
     return fetch(`https://api.openparliament.ca/politicians/${includeFormer ? '?include=former' : ''}`, {
       headers: {
         'Accept': 'application/json',
+        'User-Agent': 'albertjvm@gmail.com',
       },
     })
       .then(response => response.json())
       .then(response => {
         return response.objects.map(transformPolitician);
+      });
+  },
+  getBill: (billUrl) => {
+    return fetch(`https://api.openparliament.ca${billUrl}`, {
+      headers: {
+        'Accept': 'application/json',
+        'User-Agent': 'albertjvm@gmail.com',
+      },
+    })
+      .then(response => response.json())
+      .then(response => {
+        return response;
       });
   },
 }

@@ -5,8 +5,8 @@
 }
 
 .VoteList a {
-  text-decoration: none;
-  color: inherit;
+  /* text-decoration: none; */
+  /* color: inherit; */
 }
 
 .VoteList-row {
@@ -35,8 +35,4 @@ a:nth-child(2n) .VoteList-row:hover {
   white-space: nowrap;
   text-overflow: ellipsis;
   text-align: left;
-}
-
-.VoteList-cell.f3 {
-  flex: 3;
 }

@@ -8,3 +8,13 @@ export const loadPoliticians = politicians => ({
   type: types.LOAD_POLITICIANS,
   payload: politicians,
 });
+
+export const requestBill = (url) => ({
+  type: types.REQUEST_BILL,
+  payload: url,
+});
+
+export const loadBill = bill => ({
+  type: types.LOAD_BILL,
+  payload: bill,
+});
