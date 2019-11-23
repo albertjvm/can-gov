@@ -1,20 +1,20 @@
-import * as types from '../constants/ActionTypes';
+import * as types from "../constants/ActionTypes";
 
-export const requestPolitions = () => ({
-  type: types.REQUEST_POLITICIANS,
+export const requestPoliticians = () => ({
+  type: types.REQUEST_POLITICIANS
 });
 
 export const loadPoliticians = politicians => ({
   type: types.LOAD_POLITICIANS,
-  payload: politicians,
+  payload: politicians
 });
 
-export const requestBill = (url) => ({
+export const requestBill = url => ({
   type: types.REQUEST_BILL,
-  payload: url,
+  payload: url
 });
 
 export const loadBill = bill => ({
   type: types.LOAD_BILL,
-  payload: bill,
+  payload: bill
 });

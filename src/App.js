@@ -1,15 +1,15 @@
-import React from 'react';
+import React from "react";
 import {
   BrowserRouter as Router,
   Switch,
   Redirect,
-  Route,
+  Route
 } from "react-router-dom";
 
-import VoteList from './components/vote/VoteList';
-import PoliticianList from './components/politician/PoliticianList';
-import Header from './components/header/Header';
-import './App.css';
+import VoteList from "./components/vote/VoteList";
+import PoliticianList from "./components/politician/PoliticianList";
+import Header from "./components/header/Header";
+import "./App.css";
 
 function App() {
   return (
@@ -24,9 +24,9 @@ function App() {
             <PoliticianList />
           </Route>
           <Route path="/">
-            <Redirect to="/votes" />
+            <Redirect to="/politicians" />
           </Route>
-        </Switch>    
+        </Switch>
       </div>
     </Router>
   );
