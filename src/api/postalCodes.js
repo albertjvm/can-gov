@@ -1,8 +1,9 @@
-const API_URL = "https://represent.opennorth.ca/postcodes";
+const API_URL =
+  "https://knowyouronions.albertjvm.ca/.netlify/functions/postalCodes";
 
 export default {
   searchPostalCode: postalCode => {
-    return fetch(`${API_URL}/${postalCode}`, {
+    return fetch(`${API_URL}?postalCode=${postalCode}`, {
       Accept: "application/json"
     })
       .then(response => response.json())
