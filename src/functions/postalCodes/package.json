@@ -1,0 +1,9 @@
+{
+  "name": "postalCodes",
+  "version": "1.0.0",
+  "main": "postalCodes.js",
+  "license": "MIT",
+  "dependencies": {
+    "node-fetch": "^2.6.0"
+  }
+}

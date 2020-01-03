@@ -11,7 +11,10 @@ import PoliticianList from "./components/politician/PoliticianList";
 import Header from "./components/header/Header";
 import "./App.css";
 
+import PC_API from "./api/postalCodes";
+
 function App() {
+  PC_API.searchPostalCode("M6H2Z4");
   return (
     <Router>
       <div className="App">
