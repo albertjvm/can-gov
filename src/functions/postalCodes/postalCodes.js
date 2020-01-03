@@ -2,8 +2,8 @@ const fetch = require("node-fetch");
 const API_URL = "https://represent.opennorth.ca/postcodes";
 
 exports.handler = function(event, context, callback) {
-  const pc = "M6H2Z4";
-  return fetch(`${API_URL}/${pc}`, {
+  const postalCode = event.queryStringParameters.postalCode;
+  return fetch(`${API_URL}/${postalCode}`, {
     headers: {
       Accept: "application/json"
     }
