@@ -9,12 +9,14 @@ exports.handler = function(event, context, callback) {
     }
   })
     .then(response => response.json())
-    .then(data => ({
-      statusCode: 200,
-      headers: {
-        "Access-Control-Allow-Origin": "*/*"
-      },
-      body: JSON.stringify(data)
-    }))
+    .then(data => {
+      callback(null, {
+        statusCode: 200,
+        headers: {
+          "Access-Control-Allow-Origin": "*/*"
+        },
+        body: JSON.stringify(data)
+      });
+    })
     .catch(error => ({ statusCode: 422, body: String(error) }));
 };
