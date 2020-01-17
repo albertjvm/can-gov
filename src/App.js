@@ -8,13 +8,11 @@ import {
 
 import VoteList from "./components/vote/VoteList";
 import PoliticianList from "./components/politician/PoliticianList";
+import PostalCodeSearch from "./components/postalCodeSearch/PostalCodeSearch";
 import Header from "./components/header/Header";
 import "./App.css";
 
-import PC_API from "./api/postalCodes";
-
 function App() {
-  PC_API.searchPostalCode("M6H2Z4");
   return (
     <Router>
       <div className="App">
@@ -26,8 +24,11 @@ function App() {
           <Route path="/politicians">
             <PoliticianList />
           </Route>
+          <Route path="/home">
+            <PostalCodeSearch />
+          </Route>
           <Route path="/">
-            <Redirect to="/politicians" />
+            <Redirect to="/home" />
           </Route>
         </Switch>
       </div>

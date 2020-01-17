@@ -18,3 +18,8 @@ export const loadBill = bill => ({
   type: types.LOAD_BILL,
   payload: bill
 });
+
+export const searchPostalCode = postalCode => ({
+  type: types.SEARCH_POSTAL_CODE,
+  payload: postalCode
+});

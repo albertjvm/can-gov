@@ -1,6 +1,6 @@
-import React from 'react';
-import { NavLink } from 'react-router-dom';
-import './Header.css';
+import React from "react";
+import { NavLink } from "react-router-dom";
+import "./Header.css";
 
 export default function Header() {
   return (
@@ -10,8 +10,27 @@ export default function Header() {
       </div>
       <div className="Header-bottom">
         <nav className="Header-nav">
-          <NavLink to="/votes" className="Header-navlink" activeClassName="active">Votes</NavLink>
-          <NavLink to="/politicians" className="Header-navlink" activeClassName="active">MPs</NavLink>
+          <NavLink
+            to="/home"
+            className="Header-navlink"
+            activeClassName="active"
+          >
+            Home
+          </NavLink>
+          <NavLink
+            to="/votes"
+            className="Header-navlink"
+            activeClassName="active"
+          >
+            Votes
+          </NavLink>
+          <NavLink
+            to="/politicians"
+            className="Header-navlink"
+            activeClassName="active"
+          >
+            MPs
+          </NavLink>
         </nav>
       </div>
     </div>
