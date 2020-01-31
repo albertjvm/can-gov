@@ -1,7 +1,7 @@
 .PostalCodeSearch {
   display: flex;
   flex-direction: column;
-  padding: 2rem 25%;
+  padding: 2rem 0.5rem;
 }
 
 .PostalCodeSearch > * {
