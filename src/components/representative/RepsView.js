@@ -1,5 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 import "./RepsView.css";
 
 import PostalCodeSearch from "../postalCodeSearch/PostalCodeSearch";
@@ -8,7 +9,16 @@ function RepsView({ reps, hasReps }) {
   return hasReps ? (
     <div>
       <h2>Your government representatives are:</h2>
-      {reps.MP && <p>MP: {reps.MP.name}</p>}
+      {reps.MP && (
+        <p>
+          MP:{" "}
+          <Link
+            to={`/politicians/${reps.MP.name.toLowerCase().replace(" ", "-")}`}
+          >
+            {reps.MP.name}
+          </Link>
+        </p>
+      )}
       {reps.MPP && <p>MPP: {reps.MPP.name}</p>}
       {reps.Councillor && <p>City Councillor: {reps.Councillor.name}</p>}
     </div>
