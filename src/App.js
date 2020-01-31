@@ -8,7 +8,7 @@ import {
 
 import VoteList from "./components/vote/VoteList";
 import PoliticianList from "./components/politician/PoliticianList";
-import PostalCodeSearch from "./components/postalCodeSearch/PostalCodeSearch";
+import RepsView from "./components/representative/RepsView";
 import Header from "./components/header/Header";
 import "./App.css";
 
@@ -25,7 +25,7 @@ function App() {
             <PoliticianList />
           </Route>
           <Route path="/home">
-            <PostalCodeSearch />
+            <RepsView />
           </Route>
           <Route path="/">
             <Redirect to="/home" />

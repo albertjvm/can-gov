@@ -7,6 +7,6 @@ export default {
       Accept: "application/json"
     })
       .then(response => response.json())
-      .then(response => console.log(response));
+      .then(response => response.representatives_centroid);
   }
 };

@@ -1,13 +1,9 @@
-import {
-  LOAD_POLITICIANS,
-} from '../constants/ActionTypes';
+import { LOAD_POLITICIANS } from "../constants/ActionTypes";
 
 const reducer = (state = [], action) => {
-  switch(action.type) {
+  switch (action.type) {
     case LOAD_POLITICIANS:
-      return [
-        ...action.payload,
-      ];
+      return [...action.payload];
     default:
       return state;
   }

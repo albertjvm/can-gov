@@ -5,7 +5,7 @@ import {
   REQUEST_POLITICIANS,
   SEARCH_POSTAL_CODE
 } from "../constants/ActionTypes";
-import { loadPoliticians } from "../actions";
+import { loadPoliticians, setRep } from "../actions";
 
 function* watchRequestPoliticians() {
   yield takeEvery(REQUEST_POLITICIANS, requestPoliticians);
@@ -22,9 +22,16 @@ function* watchSearchPostalCode() {
 
 function* searchPostalCode(action) {
   const results = yield postalCodeApi.searchPostalCode(
-    action.payload.replace(/\s/g, "")
+    action.payload.toUpperCase().replace(/\s/g, "")
   );
-  yield console.log(results);
+
+  yield put(setRep(getRepByElectedOffice(results, "MP"), "MP"));
+  yield put(setRep(getRepByElectedOffice(results, "MPP"), "MPP"));
+  yield put(setRep(getRepByElectedOffice(results, "Councillor"), "Councillor"));
+}
+
+function getRepByElectedOffice(reps, office) {
+  return reps.find(r => r.elected_office === office);
 }
 
 export default function*() {

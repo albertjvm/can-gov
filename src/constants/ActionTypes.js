@@ -3,3 +3,4 @@ export const REQUEST_POLITICIANS = "REQUEST_POLITICIANS";
 export const REQUEST_BILL = "REQUEST_BILL";
 export const LOAD_BILL = "LOAD_BILL";
 export const SEARCH_POSTAL_CODE = "SEARCH_POSTAL_CODE";
+export const SET_REP = "SET_REP";

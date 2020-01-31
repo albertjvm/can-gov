@@ -23,3 +23,11 @@ export const searchPostalCode = postalCode => ({
   type: types.SEARCH_POSTAL_CODE,
   payload: postalCode
 });
+
+export const setRep = (rep, office) => ({
+  type: types.SET_REP,
+  payload: {
+    office,
+    rep
+  }
+});
