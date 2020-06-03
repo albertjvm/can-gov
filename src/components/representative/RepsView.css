@@ -29,3 +29,17 @@
 .rep-email {
     width: 200px;
 }
+
+@media screen and (max-width: 600px) {
+    .rep-row {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        margin-bottom: 2rem;
+    }
+
+    .rep-title, .rep-name, .rep-email {
+        width: 100%;
+        text-align: center;
+    }
+}

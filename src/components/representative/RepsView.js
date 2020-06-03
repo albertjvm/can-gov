@@ -13,14 +13,14 @@ function RepsView({ reps, hasReps }) {
         <div className="rep-row">
             <span className="rep-title">MP</span>
             <span className="rep-name">{reps.MP.name}</span>
-            <span className="rep-email">{reps.MP.email}</span>
+            <span className="rep-email">{reps.MP.email.toLowerCase()}</span>
         </div>
 
         {reps.MPP &&
             <div className="rep-row">
                 <span className="rep-title">MPP</span>
                 <span className="rep-name">{reps.MPP.name}</span>
-                <span className="rep-email">{reps.MPP.email}</span>
+                <span className="rep-email">{reps.MPP.email.toLowerCase()}</span>
             </div>
         }
 
@@ -28,7 +28,7 @@ function RepsView({ reps, hasReps }) {
             <div className="rep-row">
                 <span className="rep-title">City Councillor</span>
                 <span className="rep-name">{reps.Councillor.name}</span>
-                <span className="rep-email">{reps.Councillor.email}</span>
+                <span className="rep-email">{reps.Councillor.email.toLowerCase()}</span>
             </div>
         }
       </div>
