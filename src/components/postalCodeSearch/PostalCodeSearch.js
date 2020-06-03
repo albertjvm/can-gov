@@ -16,10 +16,16 @@ function PostalCodeSearch({ searchPostalCode }) {
     setPostalCode(newValue);
   };
 
+  const handleKeyPress = function(e) {
+    if (e.key === "Enter") {
+        searchPostalCode(postalCode)
+    }
+  }
+
   return (
     <main className="PostalCodeSearch">
       <label>enter your postal code:</label>
-      <input type="text" value={postalCode} onChange={handleChange} />
+      <input type="text" value={postalCode} onChange={handleChange} onKeyPress={handleKeyPress} />
       <button onClick={() => searchPostalCode(postalCode)}>
         find your onions
       </button>

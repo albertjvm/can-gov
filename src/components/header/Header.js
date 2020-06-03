@@ -6,7 +6,7 @@ export default function Header() {
   return (
     <div className="Header">
       <div className="Header-top">
-        <h1 className="Header-title">know your onions</h1>
+        <h1 className="Header-title">🧅 know your onions</h1>
       </div>
       <div className="Header-bottom">
         <nav className="Header-nav">

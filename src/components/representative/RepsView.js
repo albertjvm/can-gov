@@ -9,18 +9,29 @@ function RepsView({ reps, hasReps }) {
   return hasReps ? (
     <div>
       <h2>Your government representatives are:</h2>
-      {reps.MP && (
-        <p>
-          MP:{" "}
-          <Link
-            to={`/politicians/${reps.MP.name.toLowerCase().replace(" ", "-")}`}
-          >
-            {reps.MP.name}
-          </Link>
-        </p>
-      )}
-      {reps.MPP && <p>MPP: {reps.MPP.name}</p>}
-      {reps.Councillor && <p>City Councillor: {reps.Councillor.name}</p>}
+      <div className="rep-table">
+        <div className="rep-row">
+            <span className="rep-title">MP</span>
+            <span className="rep-name">{reps.MP.name}</span>
+            <span className="rep-email">{reps.MP.email}</span>
+        </div>
+
+        {reps.MPP &&
+            <div className="rep-row">
+                <span className="rep-title">MPP</span>
+                <span className="rep-name">{reps.MPP.name}</span>
+                <span className="rep-email">{reps.MPP.email}</span>
+            </div>
+        }
+
+        { reps.Councillor &&
+            <div className="rep-row">
+                <span className="rep-title">City Councillor</span>
+                <span className="rep-name">{reps.Councillor.name}</span>
+                <span className="rep-email">{reps.Councillor.email}</span>
+            </div>
+        }
+      </div>
     </div>
   ) : (
     <PostalCodeSearch />
