@@ -5,32 +5,28 @@ import "./RepsView.css";
 
 import PostalCodeSearch from "../postalCodeSearch/PostalCodeSearch";
 
+const Rep = ({ title, rep }) => {
+    return (
+        <div className="rep-row">
+            <span className="rep-title">{title}</span>
+            {rep
+            ? <>
+                <span className="rep-name">{rep.name}</span>
+                <span className="rep-email">{rep.email.toLowerCase()}</span>
+            </>
+            : <span>not found</span>}
+        </div>
+    );
+}
+
 function RepsView({ reps, hasReps }) {
   return hasReps ? (
     <div>
       <h2>Your government representatives are:</h2>
       <div className="rep-table">
-        <div className="rep-row">
-            <span className="rep-title">MP</span>
-            <span className="rep-name">{reps.MP.name}</span>
-            <span className="rep-email">{reps.MP.email.toLowerCase()}</span>
-        </div>
-
-        {reps.MPP &&
-            <div className="rep-row">
-                <span className="rep-title">MPP</span>
-                <span className="rep-name">{reps.MPP.name}</span>
-                <span className="rep-email">{reps.MPP.email.toLowerCase()}</span>
-            </div>
-        }
-
-        { reps.Councillor &&
-            <div className="rep-row">
-                <span className="rep-title">City Councillor</span>
-                <span className="rep-name">{reps.Councillor.name}</span>
-                <span className="rep-email">{reps.Councillor.email.toLowerCase()}</span>
-            </div>
-        }
+          {Object.keys(reps).map((keyName, i) => (
+              <Rep title={keyName} rep={reps[keyName]} />
+          ))}
       </div>
     </div>
   ) : (

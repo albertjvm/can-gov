@@ -25,8 +25,11 @@ function* searchPostalCode(action) {
     action.payload.toUpperCase().replace(/\s/g, "")
   );
 
+//   yield put(setRep(getRepByElectedOffice(results, "Prime Minister"), "Prime Minister"));
   yield put(setRep(getRepByElectedOffice(results, "MP"), "MP"));
+//   yield put(setRep(getRepByElectedOffice(results, "Premier"), "Premier"));
   yield put(setRep(getRepByElectedOffice(results, "MPP"), "MPP"));
+  yield put(setRep(getRepByElectedOffice(results, "Mayor"), "Mayor"));
   yield put(setRep(getRepByElectedOffice(results, "Councillor"), "Councillor"));
 }
 
