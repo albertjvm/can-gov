@@ -22,6 +22,10 @@ function BallotList() {
 
   return (
     <div className="BallotList">
+      <div className="BallotList-row">
+        <span className="header">Name</span>
+        <span className="header">Vote</span>
+      </div>
       {ballots.map((b, i) => (
         <BallotRow ballot={b} key={i} />
       ))}

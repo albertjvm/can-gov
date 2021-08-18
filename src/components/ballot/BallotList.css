@@ -19,3 +19,7 @@
   flex: 1;
   text-align: left;
 }
+
+.header {
+  font-weight: bold;
+}
