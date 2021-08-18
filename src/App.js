@@ -17,20 +17,22 @@ function App() {
     <Router>
       <div className="App">
         <Header />
-        <Switch>
-          <Route path="/votes">
-            <VoteList />
-          </Route>
-          <Route path="/politicians">
-            <PoliticianList />
-          </Route>
-          <Route path="/home">
-            <RepsView />
-          </Route>
-          <Route path="/">
-            <Redirect to="/home" />
-          </Route>
-        </Switch>
+        <main>
+          <Switch>
+            <Route path="/votes">
+              <VoteList />
+            </Route>
+            <Route path="/politicians">
+              <PoliticianList />
+            </Route>
+            <Route path="/home">
+              <RepsView />
+            </Route>
+            <Route path="/">
+              <Redirect to="/home" />
+            </Route>
+          </Switch>
+        </main>
       </div>
     </Router>
   );

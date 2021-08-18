@@ -2,6 +2,7 @@
   display: flex;
   flex-direction: column;
   justify-items: start;
+  position: relative;
 }
 
 .PoliticianList a {
@@ -9,7 +10,14 @@
   color: inherit;
 }
 
-.PoliticianList-row {
+.PoliticianList-header {
+  background-color: white;
+  top: 0;
+  position: sticky;
+  border-top: 1px solid black;
+}
+
+.PoliticianList-row, .PoliticianList-header {
   display: flex;
   flex-direction: row;
   padding: 0.25rem 0;
@@ -21,4 +29,28 @@
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
+}
+
+.PoliticianList-row:hover {
+  opacity: .7;
+}
+.PoliticianList-row.ndp {
+  background-color: #F58220;
+}
+.PoliticianList-row.liberal {
+  background-color: #d71b1e;
+}
+.PoliticianList-row.conservative {
+  background-color: #0f2d52;
+  color: white;
+}
+.PoliticianList-row.green {
+  background-color: #3d9b35;
+}
+.PoliticianList-row.bloc {
+  background-color: #080236;
+  color: white;
+}
+.PoliticianList-row.independent {
+  background-color: #ddd;
 }

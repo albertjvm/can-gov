@@ -1,45 +1,23 @@
 .rep-table {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
 }
 
 .rep-row {
     display: flex;
     flex-direction: row;
-    width: 600px;
+    justify-content: center;
 }
-
-.rep-title, .rep-email {
-    text-align: right;
-}
-
-.rep-name {
-    text-align: left;
+.rep-row span {
+    text-align: start;
 }
 
 .rep-title {
-    width: 200px;
-    margin-right: 5rem;
+    width: 100px;
 }
 
 .rep-name {
-    width: 200px;
+    width: 130px;
 }
+
 .rep-email {
     width: 200px;
-}
-
-@media screen and (max-width: 600px) {
-    .rep-row {
-        display: flex;
-        flex-direction: column;
-        width: 100%;
-        margin-bottom: 2rem;
-    }
-
-    .rep-title, .rep-name, .rep-email {
-        width: 100%;
-        text-align: center;
-    }
 }

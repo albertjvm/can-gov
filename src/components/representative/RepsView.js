@@ -1,22 +1,17 @@
 import React from "react";
 import { connect } from "react-redux";
-import { Link } from "react-router-dom";
 import "./RepsView.css";
 
 import PostalCodeSearch from "../postalCodeSearch/PostalCodeSearch";
 
 const Rep = ({ title, rep }) => {
-    return (
+    return rep ? (
         <div className="rep-row">
-            <span className="rep-title">{title}</span>
-            {rep
-            ? <>
-                <span className="rep-name">{rep.name}</span>
-                <span className="rep-email">{rep.email.toLowerCase()}</span>
-            </>
-            : <span>not found</span>}
+          <span className="rep-title">{title}</span>
+          <span className="rep-name">{rep.name}</span>
+          <span className="rep-email">{rep.email.toLowerCase()}</span>
         </div>
-    );
+    ) : null;
 }
 
 function RepsView({ reps, hasReps }) {
@@ -25,7 +20,7 @@ function RepsView({ reps, hasReps }) {
       <h2>Your government representatives are:</h2>
       <div className="rep-table">
           {Object.keys(reps).map((keyName, i) => (
-              <Rep title={keyName} rep={reps[keyName]} />
+              <Rep title={keyName} rep={reps[keyName]} key={keyName} />
           ))}
       </div>
     </div>

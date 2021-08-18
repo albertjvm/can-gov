@@ -19,7 +19,7 @@ function transformPolitician(p) {
 export default {
   getPoliticians: (includeFormer = false) => {
     return fetch(
-      `${URL}/politicians/${includeFormer ? "?include=former" : ""}`,
+      `${URL}/politicians/${includeFormer ? "?include=all" : ""}`,
       {
         headers: DEFAULT_HEADERS
       }

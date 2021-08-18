@@ -1,0 +1,16 @@
+.FilterInput {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+
+    font-size: 18px;
+    align-items: center;
+    padding: 10px;
+}
+
+.FilterInput input {
+    flex: 1;
+    margin-left: 10px;
+    border: none;
+    outline: none;
+}
