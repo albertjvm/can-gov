@@ -1,31 +1,16 @@
-import React, { 
-  // useEffect,
-} from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { requestBill } from '../../actions';
 
 function VoteRow({ vote, bill, requestBill }) {
-
-  // useEffect(() => {
-  //   if (vote.bill_url) {
-  //     requestBill(vote.bill_url);
-  //   }
-  // }, [vote.bill_url, requestBill]);
-
   return (
-    <div className="VoteList-row">
+    <div className={`VoteList-row ${vote.result.toLowerCase()}`}>
       <span className="VoteList-cell">#{vote.number}</span>
       <span className="VoteList-cell">{vote.date}</span>
-      <span className="VoteList-cell f3" title={vote.description.en}>{vote.description.en}</span>
+      <div className="VoteList-cell description" title={vote.description.en}>{vote.description.en}</div>
       <span className="VoteList-cell">{vote.result}</span>
-      <span className="VoteList-cell" 
-        onClick={() => vote.bill_url && requestBill(vote.bill_url)}
-      >
-        {vote.bill_url ? 
-          bill ? <a href={bill.text_url} target="_blank" rel="noopener noreferrer">{bill.number}</a> : 'load bill'
-        : '-'}
-      </span>
+      <span className="VoteList-cell">{vote.bill_url ? vote.bill_url.split('/')[3] : ''}</span>
       <span className="VoteList-cell">
         <Link to={`/votes/${vote.session}/${vote.number}`}>
           Y: { vote.yea_total} N: {vote.nay_total}

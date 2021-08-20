@@ -4,35 +4,28 @@
   list-style: none;
 }
 
-.VoteList a {
-  /* text-decoration: none; */
-  /* color: inherit; */
-}
-
 .VoteList-row {
   display: flex;
   flex-direction: row;
   padding: 0.25rem 0;
   font-size: 14pt;
 }
+.VoteList-row.passed {
+  background-color: lightgreen;
+}
+.VoteList-row.failed {
+  background-color: lightpink;
+}
 
 .VoteList-row:hover {
-  background-color: #eee;
-}
-
-a:nth-child(2n) .VoteList-row {
-  background-color: #ddd;
-}
-
-a:nth-child(2n) .VoteList-row:hover {
-  background-color: #ccc;
+  opacity: .7;
 }
 
 .VoteList-cell {
-  max-height: 20px;
   flex: 1;
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
   text-align: left;
+}
+
+.VoteList-cell.description {
+  flex: 3;
 }

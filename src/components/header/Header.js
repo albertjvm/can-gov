@@ -18,18 +18,25 @@ export default function Header() {
             Home
           </NavLink>
           <NavLink
-            to="/votes"
-            className="Header-navlink"
-            activeClassName="active"
-          >
-            Votes
-          </NavLink>
-          <NavLink
             to="/politicians"
             className="Header-navlink"
             activeClassName="active"
           >
             MPs
+          </NavLink>
+          {/* <NavLink
+            to="/bills"
+            className="Header-navlink"
+            activeClassName="active"
+          >
+            Bills
+          </NavLink> */}
+          <NavLink
+            to="/votes"
+            className="Header-navlink"
+            activeClassName="active"
+          >
+            Votes
           </NavLink>
         </nav>
       </div>

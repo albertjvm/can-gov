@@ -6,6 +6,7 @@ import {
   Route
 } from "react-router-dom";
 
+import BillList from "./components/bills/BillList";
 import VoteList from "./components/vote/VoteList";
 import PoliticianList from "./components/politician/PoliticianList";
 import RepsView from "./components/representative/RepsView";
@@ -19,6 +20,9 @@ function App() {
         <Header />
         <main>
           <Switch>
+            <Route path="/bills">
+              <BillList />
+            </Route>
             <Route path="/votes">
               <VoteList />
             </Route>
