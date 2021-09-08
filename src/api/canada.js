@@ -14,6 +14,28 @@ const transformPolitician = ({ name, url, image, current_party, current_riding})
   province: current_riding.province
 });
 
+const transformVote = ({
+  description, 
+  nay_total, 
+  yea_total, 
+  paired_total,
+  party_votes,
+  result,
+  date
+}) => ({
+  description: description.en,
+  nay_total,
+  yea_total,
+  paired_total,
+  party_votes: party_votes.map(({vote, party, disagreement}) => ({
+    vote,
+    disagreement,
+    party: party.short_name.en
+  })),
+  result,
+  date
+});
+
   export const getPoliticians = async (includeFormer = false) => {
     const response = await fetch(
       `${URL}/politicians/${includeFormer ? "?include=all" : ""}`,
@@ -42,8 +64,7 @@ const transformPolitician = ({ name, url, image, current_party, current_riding})
       }
     );
     const json = await response.json();
-    console.log(json);
-    return json.objects;
+    return transformVote(json);
   };
 
   export const getBill = async billUrl => {
