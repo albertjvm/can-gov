@@ -1,0 +1,38 @@
+.Grid {
+    .Grid--header, .Grid--row {
+        display: flex;
+        flex-direction: row;
+
+        div {
+            flex: 1;
+        }
+    }
+
+    .Grid--filterbar {
+        background-color: black;
+
+        .TextInput {
+            width: 50vw;
+            font-size: large;
+        }
+    }
+
+    .Grid--header {
+        background-color: black;
+        color: white;
+        position: sticky;
+        top: 0;
+
+        & > div.sortable {
+            cursor: pointer;
+
+            &:hover {
+                background-color: #666;
+            }
+        }
+    }
+
+    .Grid--row:hover {
+        background-color: lightgray;
+    }
+}

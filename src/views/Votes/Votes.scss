@@ -1,0 +1,38 @@
+.Votes {
+    .Votes--row {
+        cursor: pointer;
+        
+        &.passed {
+            background-color: lighten(seagreen, 25);
+        }
+        &.failed {
+            background-color: lighten(tomato, 10);
+        }
+
+        &:nth-child(2n) {
+            &.passed {
+                background-color: lighten(seagreen, 40);
+            }
+            &.failed {
+                background-color: lighten(tomato, 20);
+            }
+        }
+    }
+
+    .Votes--votecell {
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+
+        span {
+            &:nth-child(1) {
+                width: 2rem;
+                text-align: end;
+            }
+            &:nth-child(2) {
+                flex: 1;
+                text-align: start;
+            }
+        }
+    }
+}

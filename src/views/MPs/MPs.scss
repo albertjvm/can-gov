@@ -1,0 +1,36 @@
+@import '../../colors.scss';
+
+.MPs {
+    .Grid {
+        .MPs--row {
+            &.bloc {
+                background-color: $bloc-primary;
+                color: $bloc-secondary;
+            }
+            &.conservative {
+                background-color: $conservative-primary;
+                color: $conservative-secondary;
+            }
+            &.green {
+                background-color: $green-primary;
+                color: $green-secondary;
+            }
+            &.independent {
+                background-color: $independent-primary;
+                color: $independent-secondary;
+            }
+            &.liberal {
+                background-color: $liberal-primary;
+                color: $liberal-secondary;
+            }
+            &.ndp {
+                background-color: $ndp-primary;
+                color: $ndp-secondary;
+            }
+        }
+
+        .MPs--row:hover {
+            opacity: .7;
+        }
+    }
+}

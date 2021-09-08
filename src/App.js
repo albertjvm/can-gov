@@ -1,24 +1,34 @@
-import logo from './logo.svg';
 import './App.css';
+import {
+  Header,
+  MPs,
+  PostalCodeSearch,
+  Representatives,
+  Vote,
+  Votes,
+} from './views';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route
+} from "react-router-dom";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div className="App">
+        <Header />
+        <main>
+          <Switch>
+            <Route path="/mps"><MPs /></Route>
+            <Route path="/votes/:session/:number"><Vote /></Route>
+            <Route path="/votes"><Votes /></Route>
+            <Route path="/postalCode/:postalCode"><Representatives /></Route>
+            <Route path="/"><PostalCodeSearch /></Route>
+          </Switch>
+        </main>
+      </div>
+    </Router>
   );
 }
 

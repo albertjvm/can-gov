@@ -1,0 +1,28 @@
+.Header {
+    height: 10vh;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background-color: black;
+    position: sticky;
+    a {
+        color: white;
+        font-weight: bold;
+        text-decoration: none;
+        margin: 0 1rem;
+
+        &:hover {
+            color: lightgrey;
+        }
+        &.active {
+            color: gray;
+        }
+
+        h1 {
+            color: white;
+        }
+    }
+    .Spacer {
+        flex: 1;
+    }
+}

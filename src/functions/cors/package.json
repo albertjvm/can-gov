@@ -1,0 +1,9 @@
+{
+  "name": "cors",
+  "version": "1.0.0",
+  "main": "cors.js",
+  "license": "MIT",
+  "dependencies": {
+    "node-fetch": "^2.6.0"
+  }
+}

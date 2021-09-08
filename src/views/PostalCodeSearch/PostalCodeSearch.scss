@@ -1,0 +1,17 @@
+.PostalCodeSearch {
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+
+    .TextInput, .Button {
+        font-size: xx-large;
+        margin: 0 1rem;
+    }
+
+    .TextInput {
+        text-transform: uppercase;
+        border-radius: 10rem;
+    }
+}
