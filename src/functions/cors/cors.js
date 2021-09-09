@@ -5,9 +5,9 @@ exports.handler = function(event, context, callback) {
   const paramString = Object.keys(rest).map(k => `${k}=${rest[k]}`).join('&');
   const delim = url.indexOf('?') ? '&' : '?';
 
-  console.log(`${url}${delim}${paramString}`);
+  console.log(`${url}${paramString.length ? delim : ''}${paramString}`);
 
-  return fetch(`${url}${delim}${paramString}`, {
+  return fetch(`${url}${paramString.length ? delim : ''}${paramString}`, {
     headers: {
       Accept: "application/json"
     }
