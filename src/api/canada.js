@@ -9,9 +9,9 @@ const transformPolitician = ({ name, url, image, current_party, current_riding})
   url,
   id: url.split("/")[2],
   image,
-  party: current_party.short_name.en,
-  riding: current_riding.name.en,
-  province: current_riding.province
+  party: current_party?.short_name?.en,
+  riding: current_riding?.name?.en,
+  province: current_riding?.province
 });
 
 const transformVote = ({
