@@ -67,6 +67,19 @@ const transformVote = ({
     return transformVote(json);
   };
 
+  export const getBallots = async ({session, number}) => {
+    const response = await fetch(
+      `https://knowyouronions.albertjvm.ca/.netlify/functions/cors?url=${URL}/votes/ballots?vote=/votes/${session}/${number}`, {
+        headers: DEFAULT_HEADERS
+      }
+    );
+    const json = await response.json();
+    return json.objects.map(({ballot, politician_url}) => ({
+      ballot,
+      politician_url
+    }));
+  };
+
   export const getBill = async billUrl => {
     const response = await fetch(`${URL}${billUrl}`, {
       headers: DEFAULT_HEADERS
