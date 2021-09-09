@@ -1,8 +1,8 @@
 const fetch = require("node-fetch");
 
 exports.handler = function(event, context, callback) {
-  const { url, limit } = event.queryStringParameters;
-  return fetch(`${url}${limit && `${url.contains('?') ? '&' : '?'}limit=${limit}`}`, {
+  const url = event.queryStringParameters.url;
+  return fetch(url, {
     headers: {
       Accept: "application/json"
     }
