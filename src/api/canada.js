@@ -69,7 +69,7 @@ const transformVote = ({
 
   export const getBallots = async ({session, number}) => {
     const response = await fetch(
-      `https://knowyouronions.albertjvm.ca/.netlify/functions/cors?url=${URL}/votes/ballots?vote=/votes/${session}/${number}`, {
+      `https://knowyouronions.albertjvm.ca/.netlify/functions/cors?url=${URL}/votes/ballots?vote=/votes/${session}/${number}&limit=500`, {
         headers: DEFAULT_HEADERS
       }
     );
