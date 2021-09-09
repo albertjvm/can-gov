@@ -28,28 +28,39 @@ export const Vote = () => {
         )) : ballots
     );
 
+    const handleClickParty = (clicked) => {
+        setParty(clicked === party ? null : clicked);
+    };
+
     if (!vote) return 'Loading...';
 
     return (
         <section className="Vote">
+            <h2>Party Votes</h2>
             { vote.party_votes.map(({party, vote, disagreement}) => (
                 <div
                     className={`Vote--partyvote ${party.toLowerCase()}`}
                     key={party}
-                    onClick={() => setParty(party)}
+                    onClick={() => handleClickParty(party)}
                 >
-                    <Icon name={vote === "Yes" ? 'check-circle' : 'times-circle'} />
+                    <Icon name={vote === "Yes" ? 'check-circle' : 'times-circle'} title={vote} />
                     <span className="Vote--partyvote--party">{party}</span>
                     {disagreement > 0 && <span>({100 - Math.round(disagreement * 100)}%)</span>}
                 </div>
             ))}
             <div className="Vote--description">{vote.description}</div>
-
+            <h2>Ballots</h2>
             <div className="Vote--ballotlist">
                 {filteredBallots().map(({ballot, politician}) => (
-                    <div className={`Vote--partyvote ${politician?.party.toLowerCase()}`}  key={politician?.name}>
-                        <Icon name={ballot === "Yes" ? 'check-circle' : (ballot === "No" ? 'times-circle' : 'minus-circle')} />
-                        <span className="Vote--partyvote--party">{politician?.name}</span>
+                    <div
+                        className={`Vote--ballot ${politician?.party.toLowerCase()} ${ballot === "Didn't vote" ? 'no-vote' : ''}`}
+                        key={politician?.name}
+                    >
+                        <Icon
+                            name={ballot === "Yes" ? 'check-circle' : (ballot === "No" ? 'times-circle' : 'minus-circle')}
+                            title={ballot}
+                        />
+                        <span className="Vote--ballot--name">{politician?.name}</span>
                     </div>
                 ))}
             </div>
