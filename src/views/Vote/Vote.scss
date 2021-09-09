@@ -56,7 +56,8 @@
             width: 15rem;
 
             &.no-vote {
-                background-color: slategray;
+                background-color: lightgrey;
+                color: gray;
             }
         }
     }
