@@ -1,0 +1,13 @@
+.MP {
+    height: 100%;
+    width: 100%;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+
+    .MP--office {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+}

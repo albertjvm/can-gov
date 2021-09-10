@@ -1,6 +1,7 @@
 import './App.css';
 import {
   Header,
+  MP,
   MPs,
   PostalCodeSearch,
   Representatives,
@@ -20,6 +21,7 @@ function App() {
         <Header />
         <main>
           <Switch>
+            <Route path="/mps/:id"><MP /></Route>
             <Route path="/mps"><MPs /></Route>
             <Route path="/votes/:session/:number"><Vote /></Route>
             <Route path="/votes"><Votes /></Route>

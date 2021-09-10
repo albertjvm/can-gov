@@ -1,4 +1,5 @@
 export * from './Header';
+export * from './MP';
 export * from './MPs';
 export * from './PostalCodeSearch';
 export * from './Representatives';
