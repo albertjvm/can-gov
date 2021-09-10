@@ -18,7 +18,7 @@ export const Votes = () => {
                 data={votes}
                 columns={[
                     { name: 'Date', dataKey: "date", sortable: false },
-                    { name: 'Text', dataKey: "description", sortable: false, flexWeight: 2, renderer: d => d.en },
+                    { name: 'Text', dataKey: "description", flexWeight: 4, sortable: false, renderer: d => d.en },
                     { name: 'Result', dataKey: "result", sortable: false },
                     { name: 'Vote', dataKey: "result", sortable: false, renderer: (_, {yea_total, nay_total}) => 
                         <div className="Votes--votecell"><span>{yea_total}</span>/<span>{yea_total + nay_total}</span></div>

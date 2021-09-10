@@ -51,7 +51,7 @@ export const Grid = ({columns, data, filterable = false, onRowClick, rowClassnam
                 {columns.map(({ name, dataKey, sortable = true, flexWeight = 1 }, i) => (
                     <div
                         key={`grid-header-${i}`}
-                        className={sortable ? 'sortable' : ''}
+                        className={`Grid--cell ${sortable ? 'sortable' : ''}`}
                         style={{flex: flexWeight}}
                         onClick={() => sortable && handleHeaderClick(dataKey)}
                     >
@@ -68,6 +68,7 @@ export const Grid = ({columns, data, filterable = false, onRowClick, rowClassnam
                     {columns.map(({ dataKey, renderer, flexWeight = 1 }, c) => (
                         <div
                             key={`grid-cell-${r}-${c}`}
+                            className="Grid--cell"
                             style={{flex: flexWeight}}
                         >
                             {renderer ? renderer(record[dataKey], record) : record[dataKey]}

@@ -1,5 +1,6 @@
 .Header {
     height: 10vh;
+    width: 100vw;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -22,7 +23,26 @@
             color: white;
         }
     }
-    .Spacer {
-        flex: 1;
+}
+
+@media only screen and (max-width: 675px) {
+    .Header {
+        a {
+            font-size: large;
+            h1 {
+                font-size: large;
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 450px) {
+    .Header {
+        a {
+            font-size: small;
+            h1 {
+                font-size: small;
+            }
+        }
     }
 }

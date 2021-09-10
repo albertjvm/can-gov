@@ -1,5 +1,6 @@
 .PostalCodeSearch {
     height: 100%;
+    width: 100%;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -13,5 +14,17 @@
     .TextInput {
         text-transform: uppercase;
         border-radius: 10rem;
+        max-width: 80vw;
+    }
+}
+
+
+@media only screen and (max-width: 600px) {
+    .PostalCodeSearch {
+        flex-direction: column;
+
+        .Button {
+            margin-top: 2rem;
+        }
     }
 }

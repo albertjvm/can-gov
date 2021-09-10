@@ -28,7 +28,7 @@ export const MPs = () => {
                     { name: 'Name', dataKey: "name" },
                     { name: 'Party', dataKey: "party" },
                     { name: 'Riding', dataKey: "riding" },
-                    { name: 'Province', dataKey: "province" },
+                    { name: 'Province', dataKey: "province", flexWeight: 0.7 },
                 ]}
             />
         </section>
