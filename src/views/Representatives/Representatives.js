@@ -27,7 +27,7 @@ export const Representatives = () => {
             <Grid
                 data={representatives}
                 columns={[
-                    { name: 'Name', dataKey: "name" },
+                    { name: 'Name', dataKey: "name", flexWeight: 2 },
                     { name: 'Title', dataKey: "elected_office" },
                     { name: 'District', dataKey: "district_name" },
                     { name: 'Email', dataKey: "email", flexWeight: 2, renderer: (d) => (

@@ -31,7 +31,6 @@
     .MP--membership {
         color: white;
         padding: .5rem;
-        margin-bottom: 1rem;
 
         &.bloc {
             background-color: $bloc-primary;
@@ -48,11 +47,24 @@
         &.ndp {
             background-color: $ndp-primary;
         }
+        &.independent {
+            background-color: $independent-primary;
+        }
     }
     .MP--favword {
+        margin-top: 1rem;
         span {
             font-weight: bold;
             text-transform: capitalize;
+        }
+    }
+}
+
+@media only screen and (max-width: 500px) {
+    .MP {
+        .MP--membership {
+            display: flex;
+            flex-direction: column;
         }
     }
 }

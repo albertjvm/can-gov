@@ -19,17 +19,17 @@ export const MP = () => {
     );
 
     const renderAddressLine = (line, i) => {
-        if (i === 0 ) return <h3>{line}</h3>;
+        if (i === 0 ) return <h3 key={`address-line-${i}`}>{line}</h3>;
         else if (line.indexOf("Phone:") > -1) {
             const tel = line.replace(/Phone: (.*)/, "$1");
             return (
-                <Link href={`tel:${tel}`}>
+                <Link className="MP--tel" href={`tel:${tel}`}  key={`address-line-${i}`}>
                     <Icon name="phone" />
                     {tel}
                 </Link>
             );
         }
-        else return <span>{line}</span>
+        else return <span key={`address-line-${i}`}>{line}</span>
     };
 
     if (!mp) return 'Loading...';
@@ -52,16 +52,19 @@ export const MP = () => {
                 {mp?.voice}
             </Link>
             <img className="MP--image" src={`https://api.openparliament.ca${mp.image}`} alt={mp.name} />
-            {mp.memberships.map(({start_date, end_date, riding, party, label}) => (
-                <span className={`MP--membership ${party.short_name.en.toLowerCase()}`}>
-                    {label.en}: {formatDateString(start_date)} - {end_date ? formatDateString(end_date) : 'Present'}
+            {mp.memberships.map(({start_date, end_date, riding, party, label}, i) => (
+                <span className={`MP--membership ${party.short_name.en.toLowerCase()}`} key={`membership-${i}`}>
+                    <span className="MP--membership--label">{label.en}: </span>
+                    <span className="MP--membership--dates">
+                        {formatDateString(start_date)} - {end_date ? formatDateString(end_date) : 'Present'}
+                    </span>
                 </span>
             ))}
             {mp?.other_info?.favourite_word && 
                 <span className="MP--favword">Favourite word: <span>{mp?.other_info?.favourite_word.join(' ')}</span></span>
             }
-            {mp?.other_info?.constituency_offices.map((address) => (
-                <div className="MP--office">
+            {mp?.other_info?.constituency_offices.map((address, i) => (
+                <div className="MP--office" key={`office-${i}`}>
                     {address.split('\n').map(renderAddressLine)}
                 </div>
             ))}
