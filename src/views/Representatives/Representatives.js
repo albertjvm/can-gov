@@ -1,11 +1,10 @@
 import React, { useCallback, useEffect, useState } from 'react';
-import { useHistory, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { searchPostalCode } from '../../api';
 import { Grid } from '../../components';
 import './Representatives.scss';
 
 export const Representatives = () => {
-    const history = useHistory();
     const { postalCode } = useParams();
     const [representatives, setRepresentatives] = useState([]);
     const [city, setCity] = useState('');
@@ -30,7 +29,7 @@ export const Representatives = () => {
             .normalize("NFD").replace(/\p{Diacritic}/gu, "")
             .replace(/[.']/g, '')
             .split(' ').join('-');
-            
+
         return <a href={`/mps/${id}`}>{name}</a>
     };
 
