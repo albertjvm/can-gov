@@ -6,8 +6,16 @@
     .Grid {
         width: 100%;
         .Grid--row {
+            &.mp {
+                cursor: pointer;
+            }
+
             &:nth-child(2n+1) {
-                background-color: lightgrey;
+                background-color: #eee;
+
+                &:hover {
+                    background-color: #ddd;
+                }
             }
         }
     }
