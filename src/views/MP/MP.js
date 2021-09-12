@@ -1,15 +1,23 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import './MP.scss';
-import { getMP } from '../../api';
+import {
+    getMP,
+    getSpeechesForMP,
+    getSponsoredBillsForMP
+} from '../../api';
 import { Icon, Link } from '../../components';
 
 export const MP = () => {
     const { id } = useParams();
     const [ mp, setMP ] = useState();
+    const [ speeches, setSpeeches ] = useState([]);
+    const [ sponsoredBills, setSponsoredBills ] = useState([]);
 
     useEffect(() => {
         getMP({id}).then(setMP);
+        getSpeechesForMP({id}).then(setSpeeches);
+        getSponsoredBillsForMP({id}).then(setSponsoredBills);
     }, [id]);
 
     const formatDateString = (dateString) => (
@@ -68,6 +76,25 @@ export const MP = () => {
                     {address.split('\n').map(renderAddressLine)}
                 </div>
             ))}
+            <div className="MP--bills">
+                <h2>Sponsored Bills</h2>
+                {sponsoredBills.map(({ name, number}, i) => (
+                    <div key={`bill-${i}`} className="MP--bill">
+                        {number && <h3>{number}:</h3>}
+                        {name && <h3>{name.en}</h3>}
+                    </div>
+                ))}
+            </div>
+            <div className="MP--speeches">
+                <h2>Recent Speeches</h2>
+                {speeches.map(({ title, subtitle, content}, i) => (
+                    <div key={`speech-${i}`} className="MP--speech">
+                        {title && <h3>{title}</h3>}
+                        {subtitle && <h4>{subtitle}</h4>}
+                        {content && <p>{content}</p>}
+                    </div>
+                ))}
+            </div>
         </section>
     );
 };

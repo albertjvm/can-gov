@@ -98,3 +98,22 @@ export const getBill = async billUrl => {
   return json;
 };
 
+export const getSpeechesForMP = async ({id}) => {
+  const response = await fetch(`${URL}/speeches/?politician=${id}`, {
+    headers: DEFAULT_HEADERS
+  });
+  const json = await response.json();
+  return json.objects.map(({h1, h2, content}) => ({
+    title: h1?.en,
+    subtitle: h2?.en,
+    content: content?.en.replace(/<.*?>/g, "")
+  }));
+};
+
+export const getSponsoredBillsForMP = async ({id}) => {
+  const response = await fetch(`${URL}/bills/?sponsor_politician=${id}`, {
+    headers: DEFAULT_HEADERS
+  });
+  const json = await response.json();
+  return json.objects;
+};
