@@ -4,6 +4,7 @@ import {
   MP,
   MPs,
   PostalCodeSearch,
+  Speeches,
   Representatives,
   Vote,
   Votes,
@@ -23,6 +24,7 @@ function App() {
           <Switch>
             <Route path="/mps/:id"><MP /></Route>
             <Route path="/mps"><MPs /></Route>
+            <Route path="/speeches"><Speeches /></Route>
             <Route path="/votes/:session/:number"><Vote /></Route>
             <Route path="/votes"><Votes /></Route>
             <Route path="/postalCode/:postalCode"><Representatives /></Route>

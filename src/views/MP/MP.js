@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
 import './MP.scss';
 import {
     getMP,
@@ -9,6 +9,7 @@ import {
 import { Icon, Link } from '../../components';
 
 export const MP = () => {
+    const history = useHistory();
     const { id } = useParams();
     const [ mp, setMP ] = useState();
     const [ speeches, setSpeeches ] = useState([]);
@@ -87,10 +88,14 @@ export const MP = () => {
             </div>
             <div className="MP--speeches">
                 <h2>Recent Speeches</h2>
-                {speeches.map(({ title, subtitle, content}, i) => (
-                    <div key={`speech-${i}`} className="MP--speech">
-                        {title && <h3>{title}</h3>}
-                        {subtitle && <h4>{subtitle}</h4>}
+                {speeches.map(({ title, subtitle, content, date, source_id}, i) => (
+                    <div
+                        key={`speech-${i}`}
+                        className="MP--speech"
+                        onClick={() => history.push(`/speeches?date=${date}&source_id=${source_id}`)}
+                    >
+                        {title && <h3>{title}:</h3>}
+                        {subtitle && <h5>{subtitle} - </h5>}
                         {content && <p>{content}</p>}
                     </div>
                 ))}

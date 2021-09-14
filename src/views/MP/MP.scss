@@ -82,8 +82,18 @@
 
         .MP--speech {
             display: flex;
-            flex-direction: column;
+            flex-direction: row;
             align-items: center;
+
+            * { 
+                white-space: nowrap;
+                margin-right: .5rem;
+            }
+
+            p {
+                overflow-x: hidden;
+                text-overflow: ellipsis;
+            }
 
             &:nth-child(2n + 1) {
                 background-color: #eee;
