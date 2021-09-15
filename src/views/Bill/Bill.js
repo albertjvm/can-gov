@@ -29,6 +29,7 @@ export const Bill = () => {
                     <span className={`Bill--sponsorname ${sponsor?.party?.toLowerCase()}`}>{sponsor.name}</span>
                 </Link></span>
             )}
+            <a href={text_url} target="_blank" rel="noreferrer">View Bill</a>
             <iframe src={text_url} title={name}></iframe>
         </section>
     );

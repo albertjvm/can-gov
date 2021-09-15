@@ -148,7 +148,9 @@ export const getBillsForSession = async ({session}) => {
 
 export const getBill = async ({session, number}) => {
   const response = await fetch(`${NO_CORS}${URL}/bills/${session}/${number}`, {
-    headers: DEFAULT_HEADERS
+    headers: {
+      Accept: "application/json"
+    }
   });
   const {
     name, 
