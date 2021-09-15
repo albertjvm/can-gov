@@ -1,13 +1,33 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './Grid.scss';
 import { TextInput } from '../TextInput';
+import { useHistory, useLocation } from 'react-router-dom';
 
 const DIR = {ASC: 'asc', DESC: 'desc'};
 
 export const Grid = ({columns, data, filterable = false, onRowClick, rowClassnameFn}) => {
-    const [sortField, setSortField] = useState(null);
-    const [sortDir, setSortDir] = useState(DIR.ASC);
-    const [filterString, setFilterString] = useState('');
+    const location = useLocation();
+    const history = useHistory();
+    const query = new URLSearchParams(location.search);
+    const sortField = query.get("sortField");
+    const sortDir = query.get("sortDir") || DIR.ASC;
+    const filterString = query.get("filterString") || '';
+
+    const setSortField = (newValue) => {
+        setURLParam('sortField', newValue);
+    };
+    const setSortDir = (newValue) => {
+        setURLParam('sortDir', newValue);
+    };
+    const setFilterString = (newValue) => {
+        setURLParam('filterString', newValue);
+    };
+
+    const setURLParam = (key, value) => {
+        const { pathname } = location;
+        query.set(key, value);
+        history.push(`${pathname}?${query.toString()}`);
+    };
 
     const sortedData = () => {
         if (!sortField) return filteredData();
