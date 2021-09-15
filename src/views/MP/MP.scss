@@ -65,6 +65,10 @@
         .MP--bill {
             display: flex;
             flex-direction: row;
+            cursor: pointer;
+            &:hover {
+                background-color: #ddd;
+            }
 
             *:nth-child(1) {
                 margin-right: 1rem;
@@ -73,6 +77,9 @@
 
             &:nth-child(2n + 1) {
                 background-color: #eee;
+                &:hover {
+                    background-color: #ddd;
+                }
             }
         }
     }

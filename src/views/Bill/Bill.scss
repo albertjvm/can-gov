@@ -1,0 +1,57 @@
+@import '../../colors.scss';
+
+.Bill {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+
+    align-items: center;
+
+    h2 {
+        max-width: 800px;
+        text-align: center;
+    }
+
+    .Bill--sponsor {
+        margin: 1rem 0;
+
+        a {
+            text-decoration: none;
+        }
+
+        .Bill--sponsorname {
+            color: white;
+            padding: 0.5rem 1rem;
+            width: 10rem;
+            border-radius: 5rem;
+            text-decoration: none;
+            background-color: $independent-primary;
+
+            &:hover {
+                text-decoration: underline;
+            }
+
+            &.bloc {
+                background-color: $bloc-primary;
+            }
+            &.conservative {
+                background-color: $conservative-primary;
+            }
+            &.green {
+                background-color: $green-primary;
+            }
+            &.liberal {
+                background-color: $liberal-primary;
+            }
+            &.ndp {
+                background-color: $ndp-primary;
+            }
+        }
+    }
+
+    iframe {
+        width: 100%;
+        max-width: 800px;
+        flex: 1;
+    }
+}

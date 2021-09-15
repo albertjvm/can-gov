@@ -1,5 +1,7 @@
 import './App.css';
 import {
+  Bill,
+  Bills,
   Header,
   MP,
   MPs,
@@ -22,6 +24,8 @@ function App() {
         <Header />
         <main>
           <Switch>
+            <Route path="/bills/:session/:number"><Bill /></Route>
+            <Route path="/bills/:session"><Bills /></Route>
             <Route path="/mps/:id"><MP /></Route>
             <Route path="/mps"><MPs /></Route>
             <Route path="/speeches"><Speeches /></Route>

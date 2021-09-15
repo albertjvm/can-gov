@@ -79,8 +79,12 @@ export const MP = () => {
             ))}
             <div className="MP--bills">
                 <h2>Sponsored Bills</h2>
-                {sponsoredBills.map(({ name, number}, i) => (
-                    <div key={`bill-${i}`} className="MP--bill">
+                {sponsoredBills.map(({ name, number, url}, i) => (
+                    <div
+                        key={`bill-${i}`} 
+                        className="MP--bill"
+                        onClick={() => history.push(url)}
+                    >
                         {number && <h3>{number}:</h3>}
                         {name && <h3>{name.en}</h3>}
                     </div>

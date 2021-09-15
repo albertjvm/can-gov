@@ -1,4 +1,5 @@
 const URL = "https://api.openparliament.ca";
+const NO_CORS = "https://knowyouronions.albertjvm.ca/.netlify/functions/cors?url=";
 const DEFAULT_HEADERS = {
   Accept: "application/json",
   "User-Agent": "albertjvm@gmail.com"
@@ -38,12 +39,17 @@ const transformVote = ({
 
 export const getMP = async ({id}) => {
   const response = await fetch(
-    `https://knowyouronions.albertjvm.ca/.netlify/functions/cors?url=${URL}/politicians/${id}`, {
+    `${NO_CORS}${URL}/politicians/${id}`, {
       headers: DEFAULT_HEADERS
     }
   );
-  const json = await response.json();
-  return json;
+  const {url, memberships, ...rest} = await response.json();
+  return ({
+    ...rest,
+    memberships,
+    party: memberships[0]?.party?.short_name?.en,
+    id: url.split('/')[2]
+  });
 };
 
 export const getPoliticians = async (includeFormer = false) => {
@@ -69,7 +75,7 @@ export const getVotes = async ({limit = 500, offset = 0}) => {
 
 export const getVote = async ({number, session}) => {
   const response = await fetch(
-    `https://knowyouronions.albertjvm.ca/.netlify/functions/cors?url=${URL}/votes/${session}/${number}`, {
+    `${NO_CORS}${URL}/votes/${session}/${number}`, {
       headers: DEFAULT_HEADERS
     }
   );
@@ -79,7 +85,7 @@ export const getVote = async ({number, session}) => {
 
 export const getBallots = async ({session, number}) => {
   const response = await fetch(
-    `https://knowyouronions.albertjvm.ca/.netlify/functions/cors?url=${URL}/votes/ballots?vote=/votes/${session}/${number}&limit=500`, {
+    `${NO_CORS}${URL}/votes/ballots?vote=/votes/${session}/${number}&limit=500`, {
       headers: DEFAULT_HEADERS
     }
   );
@@ -88,14 +94,6 @@ export const getBallots = async ({session, number}) => {
     ballot,
     politician_url
   }));
-};
-
-export const getBill = async billUrl => {
-  const response = await fetch(`${URL}${billUrl}`, {
-    headers: DEFAULT_HEADERS
-  });
-  const json = await response.json();
-  return json;
 };
 
 export const getSpeechesForMP = async ({id}) => {
@@ -135,4 +133,35 @@ export const getSponsoredBillsForMP = async ({id}) => {
   });
   const json = await response.json();
   return json.objects;
+};
+
+export const getBillsForSession = async ({session}) => {
+  const response = await fetch(`${URL}/bills/?session=${session}`, {
+    headers: DEFAULT_HEADERS
+  });
+  const json = await response.json();
+  return json.objects.map(({name, ...rest}) => ({
+    ...rest,
+    name: name.en
+  }));
+};
+
+export const getBill = async ({session, number}) => {
+  const response = await fetch(`${NO_CORS}${URL}/bills/${session}/${number}`, {
+    headers: DEFAULT_HEADERS
+  });
+  const {
+    name, 
+    short_title,
+    status,
+    sponsor_politician_url,
+    ...rest
+  } = await response.json();
+  return ({
+    ...rest,
+    name: name.en,
+    short_title: short_title.en,
+    status: status.en,
+    sponsor_id: sponsor_politician_url?.split('/')[2]
+  });
 };

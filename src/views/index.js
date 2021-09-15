@@ -1,3 +1,5 @@
+export * from './Bill';
+export * from './Bills';
 export * from './Header';
 export * from './MP';
 export * from './MPs';
