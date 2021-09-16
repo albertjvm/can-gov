@@ -37,12 +37,16 @@ export const Speeches = () => {
 
     return (
         <section className="Speeches">
-            {sortedSpeeches().map(({attribution, mp, content, time, source_id}, i) => (
+            {sortedSpeeches().map(({attribution, mp, title, subtitle, content, time, source_id}, i) => (
                 <div
                     className={`Speeches--speech ${source_id === source_id_param ? 'selected' : ''}`}
                     key={`speech-${i}`}
                     ref={source_id === source_id_param ? selectedSpeechRef : null}
                 >
+                    <div className="Speeches--speechtitle">
+                        {title && <h3>{title}:</h3>}
+                        {subtitle && <h5>{subtitle}</h5>}
+                    </div>
                     <div className="Speeches--speechheader">
                         {renderSpeaker({attribution, mp})}
                         {time}

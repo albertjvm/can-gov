@@ -132,11 +132,13 @@ export const getSpeechesForDate = async ({date}) => {
     ];
   }
 
-  return objects.map(({attribution, content, politician_url, ...rest}) => ({
+  return objects.map(({attribution, h1, h2, content, politician_url, ...rest}) => ({
     ...rest,
     attribution: attribution.en,
     mp: politician_url?.split('/')[2],
     content: content?.en.replace(/<.*?>/g, ""),
+    title: h1?.en,
+    subtitle: h2?.en
   }));
 };
 
