@@ -112,14 +112,27 @@ export const getSpeechesForMP = async ({id}) => {
 };
 
 export const getSpeechesForDate = async ({date}) => {
-  const response = await fetch(
+  let response = await fetch(
     `${URL}/speeches/?time__range=${date}+00%3A00%2C${date}+23%3A59&limit=500`,
     {
       headers: DEFAULT_HEADERS
     }
   );
-  const json = await response.json();
-  return json.objects.map(({attribution, content, politician_url, ...rest}) => ({
+  let json = await response.json();
+  let objects = json.objects;
+
+  while (json?.pagination?.next_url) {
+    response = await fetch(
+      `${URL}${json?.pagination?.next_url}`, { headers: DEFAULT_HEADERS }
+    );
+    json = await response.json();
+    objects = [
+      ...objects,
+      ...json.objects
+    ];
+  }
+
+  return objects.map(({attribution, content, politician_url, ...rest}) => ({
     ...rest,
     attribution: attribution.en,
     mp: politician_url?.split('/')[2],
