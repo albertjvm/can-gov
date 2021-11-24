@@ -1,22 +1,20 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { useParams } from 'react-router';
 import './Bills.scss';
 import { Grid } from '../../components';
-import { getBillsForSession } from '../../api';
+import { useBills } from '../../hooks';
 import { useHistory } from 'react-router-dom';
 
 export const Bills = () => {
     const history = useHistory();
     const { session } = useParams();
-    const [ bills, setBills ] = useState([]);
-
-    useEffect(() => {
-        getBillsForSession({session}).then(setBills);
-    }, [session]);
+    const { isLoading, data: bills } = useBills({session});
 
     const handleRowClick = ({number}) => {
         history.push(`/bills/${session}/${number}`);
     };
+
+    if (isLoading) return 'Loading...';
 
     return (
         <section className="Bills">

@@ -1,16 +1,14 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import './Votes.scss';
-import { getVotes } from '../../api';
+import { useVotes } from '../../hooks';
 import { Grid } from '../../components';
 import { useHistory } from 'react-router-dom';
 
 export const Votes = () => {
     const history = useHistory();
-    const [votes, setVotes] = useState([]);
+    const { isLoading, data: votes } = useVotes();
 
-    useEffect(() => {
-        getVotes({}).then(setVotes);
-    }, [])
+    if (isLoading) return 'Loading...';
 
     return (
         <section className="Votes">

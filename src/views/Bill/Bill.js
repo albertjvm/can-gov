@@ -1,36 +1,32 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { useParams } from 'react-router';
 import './Bill.scss';
-import { getBill, getMP } from '../../api';
+import { useBill } from '../../hooks';
+import { useMP } from '../../hooks';
 import { Link } from 'react-router-dom';
 
 export const Bill = () => {
-    const {session, number} = useParams();
-    const [ bill, setBill ] = useState({});
-    const [ sponsor, setSponsor ] = useState({});
+    const { session, number } = useParams();
+    const { isLoading, data: bill } = useBill({ number, session });
+    const { isLoading: isSponsorLoading, data: sponsor } = useMP(bill?.sponsor_id);
 
-    useEffect(() => {
-        getBill({session, number}).then(setBill)
-    }, [session, number]);
-
-    useEffect(() => {
-        if (!bill.sponsor_id) return;
-        getMP({id: bill.sponsor_id}).then(setSponsor)
-    }, [bill.sponsor_id])
-
-    const { name, short_title, status, text_url} = bill;
+    if (isLoading) return 'Loading...';
 
     return (
         <section className="Bill">
-            <h2>{number}: {short_title || name}</h2>
-            <span>Status: {status}</span>
-            {sponsor && (
-                <span className="Bill--sponsor">Sponsor: <Link to={`/mps/${sponsor.id}`}>
-                    <span className={`Bill--sponsorname ${sponsor?.party?.toLowerCase()}`}>{sponsor.name}</span>
-                </Link></span>
-            )}
-            <a href={text_url} target="_blank" rel="noreferrer">View Bill</a>
-            <iframe src={text_url} title={name}></iframe>
+            <h2>{number}: {bill?.short_title || bill?.name}</h2>
+            <span>Status: {bill?.status}</span>
+            {
+                <span className="Bill--sponsor">Sponsor: {
+                    isSponsorLoading || !sponsor ? 'Loading...' :
+                    <Link to={`/mps/${sponsor.id}`}>
+                        <span className={`Bill--sponsorname ${sponsor?.party?.toLowerCase()}`}>{sponsor.name}</span>
+                    </Link>
+                }
+                </span>
+            }
+            <a href={bill?.text_url} target="_blank" rel="noreferrer">View Bill</a>
+            <iframe src={bill?.text_url} title={bill?.name}></iframe>
         </section>
     );
 };
