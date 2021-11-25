@@ -6,31 +6,18 @@
     font-size: 15px;
     line-height: 22px;
 
-    .Speeches--speech {
-        padding: 8px 20px;
-        max-width: 800px;
-        width: 100vw;
-        display: block;
 
-        .Speeches--speechspeaker {
-            font-weight: 900;
-            text-decoration: none;
-            color: rgb(29, 28, 29);
-
-            &:hover {
-                text-decoration: underline;
-            }
-        }
-
-        .Speeches--speechtime {
-            font-size: 12px;
-            color: rgb(97, 96, 97);
-        }
-
-        .Speeches--speechcontent {
-            margin-bottom: 4px;
-            color:rgb(29, 28, 29);
-            font-weight: 400;
-        }
+    .Speeches--datepill {
+        cursor: pointer;
+        font-size: 13px;
+        height: 28px;
+        line-height: 27px;
+        padding: 0 16px;
+        box-shadow: 0 0 0 1px rgba(29,28,29,0.13), 0 1px 3px 0 rgba(0, 0, 0, .08);
+        background: white;
+        border-radius: 24px;
+        border: 0px rgb(29, 28, 29);
+        position: sticky;
+        top: 11vh;
     }
 }

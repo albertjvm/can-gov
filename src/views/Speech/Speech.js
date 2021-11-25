@@ -1,4 +1,5 @@
 import React from "react";
+import dayjs from 'dayjs';
 import { Link } from 'react-router-dom';
 import { Message } from '../../components';
 import { useMP } from "../../hooks";
@@ -18,7 +19,7 @@ export const Speech = ({ speech: { attribution, mp: mpId, content, time } }) => 
     return (
         <Message 
             sender={renderSpeaker({attribution, mpId})}
-            time={time}
+            time={dayjs(time).format('hh:mm A')}
             content={content}
         />
     );
