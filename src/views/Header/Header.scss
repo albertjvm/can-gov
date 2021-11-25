@@ -5,7 +5,8 @@
     flex-direction: row;
     align-items: center;
     background-color: black;
-    position: sticky;
+    position: fixed;
+    top: 0;
     a {
         color: white;
         font-weight: bold;
