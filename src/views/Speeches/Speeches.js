@@ -40,7 +40,7 @@ export const Speeches = () => {
                             window.scroll({top: count, left: 0, behavior: 'smooth'})
                         }}
                     >
-                        {dayjs(speech?.time).format('dddd, MMMM D')}
+                        {dayjs(speech?.time).format('dddd, MMMM D, YYYY')}
                     </button>
                 );
                 renders.push(<span key={`ref-${nextDate}`} ref={dateRefs[nextDate]}></span>);

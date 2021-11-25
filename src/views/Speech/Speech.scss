@@ -1,0 +1,35 @@
+@import '../../colors.scss';
+
+.Speech {
+    .Speech--speaker {
+        color: rgb(29,28,29);
+        line-height: 27px;
+        padding: 4px 16px;
+        border-radius: 5rem;
+        background-color: lightgrey;
+        a {
+            color: rgb(29,28,29);
+        }
+
+        &.bloc {
+            background-color: $bloc-primary;
+            a { color: white; }
+        }
+        &.conservative {
+            background-color: $conservative-primary;
+            a { color: white; }
+        }
+        &.green {
+            background-color: $green-primary;
+            a { color: white; }
+        }
+        &.liberal {
+            background-color: $liberal-primary;
+            a { color: white; }
+        }
+        &.ndp {
+            background-color: $ndp-primary;
+            a { color: white; }
+        }
+    }
+}

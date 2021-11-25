@@ -5,10 +5,9 @@
     width: 100vw;
     display: block;
 
-    .Message--sender, .Message--sender > a {
+    .Message--sender, .Message--sender a {
         font-weight: 900;
         text-decoration: none;
-        color: rgb(29, 28, 29);
 
         &:hover {
             text-decoration: underline;
@@ -21,6 +20,7 @@
     }
 
     .Message--content {
+        margin-top: 4px;
         margin-bottom: 4px;
         color:rgb(29, 28, 29);
         font-weight: 400;
