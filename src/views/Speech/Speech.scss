@@ -2,6 +2,10 @@
 
 .Speech {
     .Speech--speaker {
+        display: inline-block;
+        max-width: 80vw;
+        width: fit-content;
+        white-space: nowrap;
         color: rgb(29,28,29);
         line-height: 27px;
         padding: 4px 16px;
@@ -9,6 +13,9 @@
         background-color: lightgrey;
         a {
             color: rgb(29,28,29);
+            display: block;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
 
         &.bloc {

@@ -1,15 +1,18 @@
 import React, { createRef, useEffect, useRef } from 'react';
 import dayjs from 'dayjs';
-import { useLocation } from 'react-router';
 import './Speeches.scss';
 import { useSpeechesForDate } from '../../hooks';
 import { Speech } from '../../views';
 
 export const Speeches = () => {
-    const query = new URLSearchParams(useLocation().search);
-    const date = query.get("date");
     const bottomRef = useRef(null);
-    const { isLoading, data } = useSpeechesForDate({ date });
+    const {
+        data,
+        fetchNextPage,
+        hasNextPage,
+        isFetchingNextPage,
+        isLoading,
+    } = useSpeechesForDate();
     const dateRefs = {};
 
     useEffect(() => {
@@ -21,12 +24,12 @@ export const Speeches = () => {
 
     if (isLoading) return 'Loading...';
 
-    const renderSpeeches = (speeches) => {
+    const renderSpeeches = (speeches, pageNum) => {
         const renders = [];
         let prevDate = '';
 
         speeches.forEach((speech, i) => {
-            let nextDate = dayjs(speech?.time).format('YYYYMMDD');
+            let nextDate = `${dayjs(speech?.time).format('YYYYMMDD')}-${pageNum}`;
 
             if(prevDate !== nextDate) {
                 dateRefs[nextDate] = createRef();
@@ -61,10 +64,20 @@ export const Speeches = () => {
     
     return (
         <section className="Speeches">
+            <button
+                onClick={() => fetchNextPage()}
+                disabled={!hasNextPage || isFetchingNextPage}
+            >
+                {isFetchingNextPage
+                ? 'Loading more...'
+                : hasNextPage
+                ? 'Load More'
+                : 'Nothing more to load'}
+            </button>
             {
-                data?.pages.map((group, i) => (
+                data?.pages.slice(0).reverse().map((group, i) => (
                     <React.Fragment key={i}>
-                        { renderSpeeches(group.objects) }
+                        { renderSpeeches(group.objects, i) }
                     </React.Fragment>
                 ))
             }

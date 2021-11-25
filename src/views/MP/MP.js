@@ -1,7 +1,7 @@
 import React from 'react';
 import { useHistory, useParams } from 'react-router-dom';
 import './MP.scss';
-import { useBills, useMP, useSpeeches } from '../../hooks';
+import { useBills, useMP } from '../../hooks';
 import { Icon, Link } from '../../components';
 
 export const MP = () => {
@@ -9,7 +9,6 @@ export const MP = () => {
     const { id } = useParams();
     const { isLoading, data } = useMP(id);
     const { isLoading: isBillsLoading, data: sponsoredBills } = useBills({mpId: id});
-    const { isLoading: isSpeechesLoading, data: speeches } = useSpeeches({mpId: id});
 
     const formatDateString = (dateString) => (
         new Date(dateString).toLocaleDateString("en-US", {
@@ -79,23 +78,6 @@ export const MP = () => {
                         >
                             {number && <h3>{number}:</h3>}
                             {name && <h3>{name}</h3>}
-                        </div>
-                    ))
-                }
-            </div>
-            <div className="MP--speeches">
-                <h2>Recent Speeches</h2>
-                {
-                    isSpeechesLoading ? 'Loading...' : 
-                    speeches.map(({ title, subtitle, content, date, source_id}, i) => (
-                        <div
-                            key={`speech-${i}`}
-                            className="MP--speech"
-                            onClick={() => history.push(`/speeches?date=${date}&source_id=${source_id}`)}
-                        >
-                            {title && <h3>{title}:</h3>}
-                            {subtitle && <h5>{subtitle} - </h5>}
-                            {content && <p>{content}</p>}
                         </div>
                     ))
                 }

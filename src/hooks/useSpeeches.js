@@ -18,15 +18,16 @@ const getSpeeches = async ({mpId}) => {
     }));
 };
 
-const getSpeechesForDate = async ({ date, pageParam = 0 }) => {
+const getSpeechesForDate = async ({ pageParam = 0 }) => {
     let response = await fetch(
-        `${NO_CORS}${URL}/speeches/?limit=500&offset=${pageParam * 500}${!date ? '' : `&time__range=${date}+00%3A00%2C${date}+23%3A59`}`,
+        `${NO_CORS}${URL}/speeches/?limit=500&offset=${pageParam * 500}`,
         {
             headers: DEFAULT_HEADERS
         }
     );
 
     const { pagination, objects } = await response.json();
+
     return {
         pagination,
         objects: objects
@@ -58,16 +59,15 @@ export function useSpeeches({mpId}) {
     })
 };
 
-export function useSpeechesForDate({ date }) {
-    return useInfiniteQuery(["speeches", date], () => getSpeechesForDate({ date }), {
+export function useSpeechesForDate() {
+    return useInfiniteQuery(["speeches"], getSpeechesForDate, {
         ...DEFAULT_QUERY_OPTIONS,
-        // enabled: !!date,
-        getNextPageParam: ({ limit, offset, next_url }) => {
+        getNextPageParam: ({ pagination: { limit, offset, next_url } }) => {
             if (next_url !== null) {
                 return offset/limit + 1;
             }
         },
-        getPreviousPageParam: ({limit, offset, previous_url}) => {
+        getPreviousPageParam: ({ pagination: { limit, offset, previous_url } }) => {
             if (previous_url !== null) {
                 return offset/limit - 1;
             }
