@@ -27,12 +27,20 @@ const getSpeechesForDate = async ({ date, pageParam = 0 }) => {
     );
 
     const { pagination, objects } = await response.json();
-
-    objects.reverse();
-
     return {
         pagination,
-        objects: objects.map(({attribution, h1, h2, content, politician_url, ...rest}) => ({
+        objects: objects
+        .sort((a, b) => {
+            let aId = parseInt(a.source_id);
+            let bId = parseInt(b.source_id);
+
+            if (isNaN(aId) || isNaN(bId)) {
+                return (new Date(a.time)).getTime() - (new Date(b.time)).getTime()
+            } else {
+                return parseInt(a.source_id) - parseInt(b.source_id);
+            }
+        })
+        .map(({attribution, h1, h2, content, politician_url, ...rest}) => ({
             ...rest,
             attribution: attribution.en,
             mp: politician_url?.split('/')[2],
