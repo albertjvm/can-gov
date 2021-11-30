@@ -24,6 +24,7 @@ export const Speech = ({ speech: { attribution, mp: mpId, content, time } }) => 
     return (
         <Message 
             className="Speech"
+            avatarUrl={isMpLoading ? null : `https://api.openparliament.ca${mp?.image}`}
             sender={renderSpeaker({attribution, mpId})}
             time={dayjs(time).format('hh:mm A')}
             content={content}

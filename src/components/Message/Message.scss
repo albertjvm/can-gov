@@ -3,26 +3,49 @@
     padding: 8px 20px;
     max-width: 800px;
     width: 100vw;
-    display: block;
+    display: flex;
+    flex-direction: row;
 
-    .Message--sender, .Message--sender a {
-        font-weight: 900;
-        text-decoration: none;
+    .Message--left {
+        margin-right: 8px;
 
-        &:hover {
-            text-decoration: underline;
+        .Message--avatar, .Message--noavatar {
+            height: 36px;
+            width: 36px;
+            border-radius: 4px;
+        }
+
+        .Message--avatar {
+            object-fit: cover;
+        }
+
+        .Message--noavatar {
+            background-color: lightgrey;
         }
     }
 
-    .Message--timestamp {
-        font-size: 12px;
-        color: rgb(97, 96, 97);
-    }
+    .Message--right {
+        display: block;
 
-    .Message--content {
-        margin-top: 4px;
-        margin-bottom: 4px;
-        color:rgb(29, 28, 29);
-        font-weight: 400;
+        .Message--sender, .Message--sender a {
+            font-weight: 900;
+            text-decoration: none;
+
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+
+        .Message--timestamp {
+            font-size: 12px;
+            color: rgb(97, 96, 97);
+        }
+
+        .Message--content {
+            margin-top: 4px;
+            margin-bottom: 4px;
+            color:rgb(29, 28, 29);
+            font-weight: 400;
+        }
     }
 }
